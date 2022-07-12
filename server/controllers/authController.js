@@ -22,9 +22,11 @@ passport.use(new googleStrategy({
     User.findOne({googleId: profile.id}).then((existingUser) => {
         if(existingUser){
            done(null, existingUser)
+           console.log(profile)
            console.log("existing")
         }else{
-            new User({ googleId: profile.id}).save()
+            console.log(profile)
+            new User({ googleId: profile.id, email: profile.emails[0].value}).save()
             .then((user) => done(null, user))
            console.log("created")
         }
@@ -38,18 +40,23 @@ const googleAuthForward = passport.authenticate('google',{
 
 const googleAuthCallback = passport.authenticate('google')
 
+const redirectAfterGoogleAuth = (req, res) =>{
+    res.redirect('/surveys')
+}
+
 const currentUser = (req, res) => {
     res.send(req.user)
 }
 
 const logoutUser = (req, res) => {
     req.logout()
-    res.send("Logged out?" + req.user)
+    res.redirect('/')
 }
 
 module.exports = {
     googleAuthForward,
     googleAuthCallback,
+    redirectAfterGoogleAuth,
     currentUser,
     logoutUser
 }

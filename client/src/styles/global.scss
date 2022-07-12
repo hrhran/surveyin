@@ -1,0 +1,26 @@
+@import './variables';
+
+nav {
+    background-color: $--primary-background-color !important;
+
+    .btn {
+        background-color: #a172ff;
+    }
+
+    .btn:hover {
+        background-color: #cbb2ff;
+        cursor: pointer;
+    }
+
+    .brand-logo {
+        font-weight: 200;
+        letter-spacing: 5px;
+    }
+    
+    .login-button {
+        margin: 0 -20px;
+        letter-spacing: 1.6px;
+    }
+}
+
+
