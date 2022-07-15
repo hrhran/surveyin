@@ -3,15 +3,6 @@
 nav {
     background-color: $--primary-background-color !important;
 
-    .btn {
-        background-color: #a172ff;
-    }
-
-    .btn:hover {
-        background-color: #cbb2ff;
-        cursor: pointer;
-    }
-
     .brand-logo {
         font-weight: 200;
         letter-spacing: 5px;
@@ -24,3 +15,28 @@ nav {
 }
 
 
+.btn-floating{
+    background-color: $--primary-background-color !important;
+    width: 80px!important;
+    height: 80px !important;
+    i{
+        margin-top: 10px;;
+        font-size: 40px;
+    }
+}
+.btn-floating:hover{
+    background-color:#a172ff !important;
+}
+
+label{
+    font-size:20px;
+}
+
+.btn {
+    background-color: #a172ff;
+}
+
+.btn:hover {
+    background-color: #cbb2ff;
+    cursor: pointer;
+}

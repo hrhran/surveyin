@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 5000
 connectDB()
 const authRoutes = require('./routes/authRoutes')
 const billingRoutes = require('./routes/billingRoutes')
+const surveyRoutes = require('./routes/surveyRoutes')
 
 const app = express()
 
@@ -24,6 +25,13 @@ app.use(passport.session())
 
 app.use(authRoutes)
 app.use(billingRoutes)
+app.use(surveyRoutes)
+
+// app.use(express.static('/client/build'))
+// const path = require('path')
+// app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'client', 'build'))
+// })
 
 app.listen(PORT,() =>{
     console.log("Backend is running")

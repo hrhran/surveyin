@@ -1,4 +1,3 @@
-const passport = require('passport')
 const express = require('express')
 const router = express.Router()
 const { googleAuthForward, googleAuthCallback, redirectAfterGoogleAuth, currentUser, logoutUser } = require('../controllers/authController')
