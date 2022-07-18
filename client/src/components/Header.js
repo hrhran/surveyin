@@ -4,12 +4,21 @@ import { connect } from 'react-redux'
 import Payments from './Payments'
 
 class Header extends Component {
+
+    state = {
+        toggle: false
+    }
+
+    toggleHandler = () => {
+        this.setState({toggle: !this.state.toggle})
+    }
+
     renderContent() {
         switch(this.props.auth){
             case null:
                 return 'Processing...'
             case false:
-                return <li><a href='/auth/google'><i className="fa-brands fa-google"></i>  LOGIN WITH GOOGLE</a></li>
+                return <li><a href='/auth/google' className='center google'><i className="fa-brands fa-google"></i>  LOGIN WITH GOOGLE</a></li>
             default:
                 return([
                     <li key="1"><Payments /></li>,
@@ -29,8 +38,19 @@ class Header extends Component {
                         <Link to={this.props.auth? '/surveys':'/'} className='left brand-logo'>
                             SURVEYIN
                         </Link>
-                        <ul className='right login-button'>
-                          {this.renderContent()}
+                        <ul className='right login-button'> 
+                         <i className="material-icons burger" onClick={this.toggleHandler}>menu</i>
+                         {
+                            this.state.toggle? 
+                                <div className='nav-items'>
+                                    {this.renderContent()}
+                                </div>
+                                :
+                                null
+                         }
+                                <div className='desk-items'>
+                                    {this.renderContent()}
+                                </div>
                         </ul>
                     </div>
                 </div>

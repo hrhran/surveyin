@@ -23,7 +23,7 @@ class App extends Component {
     render(){
         return(
             <div>
-               <BrowserRouter>
+               <BrowserRouter basename={'surveyin'}>
                     <div>
                         <Header />
                         <Route exact path="/" component={Landing} />
