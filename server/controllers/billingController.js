@@ -10,7 +10,7 @@ const Stripe = stripex(
   }
 )
 
-const handleStripeToken = async (req, res) => {
+const createPayment = async (req, res) => {
     const session = await stripe.checkout.sessions.create({
         customer_email: req.body.email,
         success_url: 'http://localhost:3000/surveys?success=true',
@@ -55,6 +55,6 @@ const webhookListener = async (req, res) => {
 
 
 module.exports = {
-    handleStripeToken,
+    createPayment,
     webhookListener
 }
